@@ -1,0 +1,56 @@
+* {
+	padding: 5;
+	margin: 5;
+	font-family: 'Times New Roman', Times, serif;
+	text-align: center;
+}
+
+/*#AB987A*/
+
+form {
+	padding: 60px 50px;
+	background-color: #0F1626;
+	border-radius: 5%;
+	margin: calc(25% + 100px);
+	margin-top: 200px;
+	padding-top: 28px;
+	margin-bottom: 30px;
+}
+
+h1 {
+	text-align: center;
+	padding: 12px;
+	color: #F5F5F5;
+}
+.mensaje {
+	text-align: center;
+	width: 100%;
+	padding: 12px;
+	color: #0F1626;
+}
+p {
+	padding: 1.5%;
+	color: #F5F5F5;
+	text-transform: uppercase;
+
+}
+
+input {
+	width: calc(100% - 20px);
+	padding: 9px;
+	margin: auto;
+	margin-top: 12px;
+	font-size: 16px
+}
+
+input[type='submit']{
+	background-color: #F5F5F5;
+	color: #0F1626;
+	width: calc(80% - 20px);
+	margin: 0 10%;
+	margin-top: 22px;
+	border: none;
+}
+
+
+
