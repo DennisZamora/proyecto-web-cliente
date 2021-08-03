@@ -23,7 +23,7 @@
         </h5>
         <input type="text" placeholder="Name" name="name">
         <input type="text" placeholder="Last Name" name="last_name">
-        <input type="text" placeholder="Username" name="pwUsuario">
+        <input type="text" placeholder="Username" name="username">
         <input type="email" placeholder="E-mail" name="email">
         <input type = "password" placeholder="Password" name="pwUsuario">      
         <button type="submit" name="btnRegister">

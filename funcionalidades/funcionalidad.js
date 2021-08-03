@@ -1,3 +1,4 @@
+/*
 function mostrarHora() {
     var reloj = "";
     var Digital = new Date();
@@ -34,3 +35,4 @@ function mostrarHora() {
     requestAnimationFrame(mostrarHora);
 }
 requestAnimationFrame(mostrarHora);
+*/

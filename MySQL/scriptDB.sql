@@ -43,8 +43,12 @@ insert into rol (idRol,descripcionRol) values
 ('usuario','Usuario regular');
 
 insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
+('Dennis','Zamora','dennis','denniszamora@hotmail.com','dennis123','admin');
+
+insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
 ('Jesus','Vargas','jesus','jesusvargas@hotmail.com','jesus123','usuario');
-    
+
+  
 insert into categoria (nombreCategoria) values 
 ('MySQL'),
 ('JavaScript'),
