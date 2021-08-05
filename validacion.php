@@ -1,6 +1,6 @@
 <?php
 
- include('conexiones/conexion.php');
+include('conexiones/conexion.php');
 if(isset($_POST['usuario'])){
   $usuario=$_POST['usuario'];
 } else {
@@ -15,11 +15,11 @@ if(isset($_POST['pwUsuario'])){
 
 if ($usuario === "" || $contrasena === ""){
   $error = "Algunos datos estan vacios";
-  echo "<script type='text/javascript'>alert('$error');</script>";
+  echo "<script type='text/javascript'>console.log('$error');</script>";
 }
 
 
-
+$conexion = conecta();
 $consulta="SELECT username,contrasena FROM usuario where username='$usuario' and contrasena='$contrasena'";
 $resultado=mysqli_query($conexion,$consulta);
 
@@ -35,7 +35,7 @@ if($filas>=1){
     include("index.php");
   ?>
   
-  <script language="javascript">alert("ERROR AL INICIAR SESION");</script>;
+  <!-- <script language="javascript">alert("ERROR AL INICIAR SESION");</script>; -->
   <?php
 }
 mysqli_free_result($resultado);

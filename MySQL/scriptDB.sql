@@ -3,11 +3,10 @@ use proyecto;
 
 
 CREATE TABLE  rol (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   idRol VARCHAR(15) NOT NULL,
   descripcionRol VARCHAR(30) NOT NULL,
   PRIMARY KEY (id));
-
 
 CREATE TABLE usuario (
   idUsuario INT NOT NULL AUTO_INCREMENT,
@@ -17,9 +16,9 @@ CREATE TABLE usuario (
   email VARCHAR(80) NOT NULL,
   contrasena VARCHAR(40) NOT NULL,
   fecha_registro DATETIME NOT NULL DEFAULT current_timestamp,
-  idRol VARCHAR(15) NOT NULL,
+  idRol int not null,
   PRIMARY KEY (idUsuario),
-  CONSTRAINT FK_Usuario_Rol FOREIGN KEY (idRol) REFERENCES proyecto4.rol (idRol));
+  CONSTRAINT FK_Usuario_Rol FOREIGN KEY (idRol) REFERENCES rol (id));
 
 create table categoria(
 idCategoria int not null auto_increment,
@@ -43,8 +42,12 @@ insert into rol (idRol,descripcionRol) values
 ('usuario','Usuario regular');
 
 insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
-('Jesus','Vargas','jesus','jesusvargas@hotmail.com','jesus123','usuario');
-    
+('Dennis','Zamora','dennis','denniszamora@hotmail.com','dennis123',1);
+
+insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
+('Jesus','Vargas','jesus','jesusvargas@hotmail.com','jesus123',2);
+
+  
 insert into categoria (nombreCategoria) values 
 ('MySQL'),
 ('JavaScript'),
