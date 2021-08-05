@@ -12,24 +12,30 @@
     </style>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="icon" href="imagenes/icono.png">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 
 <body>
     
-    <form action ="valiRegister.php" method="post" class="form-box">
+    <form id="register" action ="valiRegister.php" method="post" class="form-box">
         <h1 class = "advice">Register</h1>
         <h5 class="advice">
             Please fill in the following fields to register as user
         </h5>
-        <input type="text" placeholder="Name" name="name">
-        <input type="text" placeholder="Last Name" name="last_name">
-        <input type="text" placeholder="Username" name="username">
-        <input type="email" placeholder="E-mail" name="email">
-        <input type = "password" placeholder="Password" name="pwUsuario">      
-        <button type="submit" name="btnRegister">
-            Register
-        </button>
+        <input type="text" id="name" placeholder="Name" name="name">
+        <input type="text" id="last_name" placeholder="Last Name" name="last_name">
+        <input type="text" id="username" placeholder="Username" name="username">
+        <input type="email" id="email" placeholder="E-mail" name="email">
+        <input type = "password" id="password" placeholder="Password" name="pwUsuario">    
+        <div class="enviar">
+                <input type="hidden" id="tipo" value="crear">
+                <button type="submit" name="btnRegister"> Register </button>
+        </div>  
         
     </form>
+    <script src="plugins/jquery-3.5.1.js"></script>
+    <script src="plugins/sweetalert2.all.min.js"></script>
+    <script src="funcionalidades/alert.js"></script>
+   
 </body>
 </html>

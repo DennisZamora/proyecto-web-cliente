@@ -1,11 +1,5 @@
 <?php
 
-
-include('conexiones/conexion.php');
-
-
-
-
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
 } else {
@@ -36,37 +30,36 @@ if (isset($_POST['pwUsuario'])) {
     $contrasena = "";
 }
 
-if ($name === "" || $last_name ==="" || $username === "" || $email ==="" || $contrasena === "") {
+if ($name === "" || $last_name === "" || $username === "" || $email === "" || $contrasena === "") {
     $error = "Algunos datos estan vacios";
     echo "<script type='text/javascript'>alert('$error');</script>";
+    header("location:createAccount.php");
+} else {
+    $idRol = 2;
+    include "conexiones/conexion.php";
+    ingresarUsuario($name, $last_name, $username, $email, $contrasena, $idRol);
 }
 
 
-$idRol = 'cliente';
-$consulta="INSERT INTO usuario (nombre,last_name,username,email,contrasena,idRol) 
-           VALUES ('$name','$last_name','$username','$email','$contrasena','$idRol')";
-
-$resultado=mysqli_query($conexion,$consulta);
-
-$filas=mysqli_num_rows($resultado);
-
-if($filas>=1){ 
-    header("location:index.php");
-}else{
-    ?>
-    <?php
-    include("createAccount.php");
-  ?>
-  
-  <script language="javascript">alert("ERROR AL REGISTRARSE");</script>;
-  <?php
+function ingresarUsuario($pname, $plast_name, $pusername, $pemail, $pcontrasena, $pidRol)
+{
+    $conexion = conecta();
+    $consulta = $conexion->prepare("INSERT INTO usuario (nombre,last_name,username,email,contrasena,idRol)  VALUES (?, ?, ?, ?, ?, ?)");
+    $consulta->bind_param("sssssi", $name, $last_name, $username, $email, $contrasena, $idRol);
+    
+    $name = $pname;
+    $last_name = $plast_name;
+    $username = $pusername;
+    $email = $pemail;
+    $contrasena = $pcontrasena;
+    $idRol = $pidRol;
+     
+    if ($consulta->execute()) {
+        $consulta->close();
+        $conexion->close();
+        header("location:index.php");
+    } else {
+        header("location:createAccount.php");
+    }
 }
-mysqli_free_result($resultado);
-mysqli_close($conexion);
-
-
-
-
-
-
 
