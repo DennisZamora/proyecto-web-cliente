@@ -15,19 +15,12 @@
     </head>
 
     <?php 
-        $conn = mysqli_connect("localhost", "root", "", "proyecto");
+    include('conexiones/conexion.php');
 
-        if(!$conn) {
-            echo "connection eror:" . mysqli_connect_error();
-        }
+    $conexion = conecta();
+    $consulta="SELECT tituloBlog, contenidoBlog, fecha_publicacion FROM blog";
+    $resultado=mysqli_query($conexion,$consulta);
 
-        // query para tomar todos los blogs
-
-        $sql = "SELECT tituloBlog, contenidoBlog, fecha_publicacion FROM blog ";
-        
-        $result = mysqli_query($conn, $sql);
-        
-        $blogs = mysqli_fetch_all($result, MYSQL_ASSOC);
     ?>
 
 
@@ -70,13 +63,14 @@
         
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                    <?php foreach($pizzas as $pizza){ ?>
+                    <?php foreach($resultado as $blog){ ?>
 
                         <div class="col s6 md3">
                             <div class="card z-depth-0">
                                 <div class="card-content center">
-                                    <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
-                                    <div><?php echo htmlspecialchars($pizza['ingredients']); ?></div>
+                                    <h6><?php echo htmlspecialchars($blog['tituloBlog']); ?></h6>
+                                    <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
+                                    <div><?php echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
                                 </div>
                                 <div class="card-action right-align">
                                 <a class="brand-text" href="#">more info</a>
