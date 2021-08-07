@@ -18,7 +18,8 @@
     include('conexiones/conexion.php');
 
     $conexion = conecta();
-    $consulta="SELECT tituloBlog, contenidoBlog, fecha_publicacion FROM blog";
+    $consulta="select b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria  from blog a,usuario b,categoria c
+    where a.idUsuario = b.idUsuario ";
     $resultado=mysqli_query($conexion,$consulta);
 
     ?>
@@ -70,7 +71,9 @@
                                 <div class="card-content center">
                                     <h6><?php echo htmlspecialchars($blog['tituloBlog']); ?></h6>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
+                                    <div><?php echo htmlspecialchars($blog['nombre']); ?></div>
                                     <div><?php echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
+                                    <div><?php echo htmlspecialchars($blog['nombreCategoria']); ?></div>
                                 </div>
                                 <div class="card-action right-align">
                                 <a class="brand-text" href="#">more info</a>
