@@ -13,6 +13,14 @@
         <link rel="icon" href="imagenes/icono.png">
         <link rel="stylesheet" href="css/principal.css">
     </head>
+
+    <?php 
+    include('conexiones/conexion.php');
+    $conexion = conecta();
+    $consulta="SELECT tituloBlog, contenidoBlog, fecha_publicacion FROM blog";
+    $resultado=mysqli_query($conexion,$consulta);
+
+    ?>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -49,69 +57,31 @@
         
         <div class="container px-4 px-lg-5">
         
-        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                     
-                    
-                    <!-- <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2021
-                        </p>
-                    </div>
-                    
-                    <hr class="my-4" />
-                    
-                    <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 18, 2021
-                        </p>
-                    </div>
-                  
-                    <hr class="my-4" />
-                   
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on August 24, 2021
-                        </p>
-                    </div>
-                    
-                    <hr class="my-4" />
-                    
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on July 8, 2021
-                        </p>
-                    </div>
-                   
-                    <hr class="my-4" />
-                   
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                    <?php foreach($resultado as $blog){ ?>
+
+                        <div class="col s6 md3">
+                            <div class="card z-depth-0">
+                                <div class="card-content center">
+                                    <h6><?php echo htmlspecialchars($blog['tituloBlog']); ?></h6>
+                                    <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
+                                    <div><?php echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
+                                </div>
+                                <div class="card-action right-align">
+                                <a class="brand-text" href="#">more info</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?> 
+                                
                 </div>
             </div>
-        </div> -->
+        </div> 
         
-        <!-- <footer class="border-top">
+        
+        <footer class="border-top">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -145,7 +115,7 @@
                     </div>
                 </div>
             </div>
-        </footer> -->
+        </footer> 
         
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
