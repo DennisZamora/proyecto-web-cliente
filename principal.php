@@ -60,6 +60,7 @@
         
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    
                     <?php foreach($resultado as $blog){ ?>
 
                         <div class="col s6 md3">
@@ -74,9 +75,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                     <?php } ?> 
-                                
+                                 
                 </div>
             </div>
         </div> 
@@ -87,22 +88,6 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <ul class="list-inline text-center">
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
                             <li class="list-inline-item">
                                 <a href="https://github.com/shu353/proyecto-web-cliente">
                                     <span class="fa-stack fa-lg">
