@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 
-<body>
-
+<body id="contenido">
     <form id="login" action="validacion.php" method="post" class="form-box">
         <h1>
             <img class="imagen" src="imagenes/1.png" alt="Profile Photo">
@@ -31,12 +30,13 @@
             <input type="hidden" id="tipo" value="login">
             <button type="submit" name="btnLogin" value="Ingresar">Login</button>
         </div>
-        <h5 class="registro">
+        <h5 id="registro" class="registro">
             Not registered? <a href="createAccount.php">Create an account</a>
         </h5>
     </form>
-
+   
     <script src="plugins/jquery-3.5.1.js"></script>
+    <script src="funcionalidades/register.js"></script>
     <script src="plugins/sweetalert2.all.min.js"></script>
     <script src="funcionalidades/alert.js"></script>
 </body>

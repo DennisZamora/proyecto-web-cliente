@@ -16,16 +16,11 @@
 
     <?php 
     include('conexiones/conexion.php');
-
     $conexion = conecta();
-    $consulta="select b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria  from blog a,usuario b,categoria c
-    where a.idUsuario = b.idUsuario ";
+    $consulta="SELECT tituloBlog, contenidoBlog, fecha_publicacion FROM blog";
     $resultado=mysqli_query($conexion,$consulta);
 
     ?>
-
-
-
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -37,9 +32,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Perfil</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Categoria</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Categoria</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
                     </ul>
                 </div>
@@ -64,28 +61,28 @@
         
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    
                     <?php foreach($resultado as $blog){ ?>
 
                         <div class="col s6 md3">
                             <div class="card z-depth-0">
                                 <div class="card-content center">
-                                    <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
+                                    <h6><?php echo htmlspecialchars($blog['tituloBlog']); ?></h6>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
-                                    <div><?php echo htmlspecialchars($blog['nombre']); ?></div>
                                     <div><?php echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
-                                    <div><?php echo htmlspecialchars($blog['nombreCategoria']); ?></div>
                                 </div>
                                 <div class="card-action right-align">
-                                    <button class="btn" type="button"> <a class="brand-text" href="#">more info</a></button>    
+                                <a class="brand-text" href="#">more info</a>
                                 </div>
                             </div>
                         </div>
-
+                        <br>
                     <?php } ?> 
-                                
+                                 
                 </div>
             </div>
         </div> 
+        
         
         <footer class="border-top">
             <div class="container px-4 px-lg-5">
@@ -93,23 +90,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <ul class="list-inline text-center">
                             <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
+                                <a href="https://github.com/shu353/proyecto-web-cliente">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>

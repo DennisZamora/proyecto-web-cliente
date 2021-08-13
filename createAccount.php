@@ -31,6 +31,11 @@
                 <input type="hidden" id="tipo" value="crear">
                 <button type="submit" name="btnRegister"> Register </button>
         </div>  
+        <div>
+            <h5 class="registro">
+            <a href="index.php"> Go to back the login</a>
+        </h5>
+        </div>
         
     </form>
     <script src="plugins/jquery-3.5.1.js"></script>
