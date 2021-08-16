@@ -21,6 +21,9 @@
     where a.idUsuario = b.idUsuario";
     $resultado=mysqli_query($conexion,$consulta);
 
+    $consultaCategoria = "SELECT nombreCategoria FROM categoria";
+    $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
+
     ?>
     <body>
         <!-- Navigation-->
@@ -33,10 +36,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
+                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Categoria</a></li>
+                        <li class="nav-item">
+                            
+                                <select id="id-categoria" >
+                                    <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
+                                    <?php foreach($resultadoCategoria as $categoria){ ?>
+                                        <option value = "$categoria['idCategoria']">
+                                            <?php echo htmlspecialchars($categoria['nombreCategoria']); ?>
+                                        <?php } ?> 
+                                </select>
+                            
+                        </li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
                     </ul>
