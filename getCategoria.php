@@ -1,18 +1,19 @@
 <?php 
-include("conexion.php");
+include("conexiones/conexion.php");
 
 $idCategoria = 0;
-
+$conexion = conecta();
 if(isset($_POST['categoria'])){
-    $idCategoria = mysqli_real_escape_string($con,$_POST['categoria']); //id categoria
+    $idCategoria = mysqli_real_escape_string($conexion,$_POST['categoria']); //id categoria
  }
 
  $blogArray = array();
 
+
 if($idCategoria > 0){
    $sql = "SELECT idBlog, tituloBlog, contenidoBlog, fecha_publicacion,  FROM blog WHERE idCategoria=".$idCategoria;
 
-   $result = mysqli_query($con,$sql);  
+   $result = mysqli_query($conexion,$sql);  
    
    while( $row = mysqli_fetch_array($result) ){
       $idBlog = $row['idBlog'];
@@ -23,6 +24,3 @@ if($idCategoria > 0){
  }
 // encoding array to json format
 echo json_encode($blogArray);
-
-
-?>
