@@ -17,7 +17,7 @@
     <?php 
     include('conexiones/conexion.php');
     $conexion = conecta();
-    $consulta="select b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria  from blog a,usuario b,categoria c
+    $consulta="select b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria, c.idCategoria  from blog a,usuario b,categoria c
     where a.idUsuario = b.idUsuario";
     $resultado=mysqli_query($conexion,$consulta);
 
@@ -74,13 +74,13 @@
         <div class="container px-4 px-lg-5">
         
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7" id="blogs">
+                <div class="col-md-10 col-lg-8 col-xl-7" >
                     
                     <?php foreach($resultado as $blog){ ?>
 
                         <div class="col s6 md3">
                             <div class="card z-depth-0">
-                                <div class="card-content center">
+                                <div class="card-content center" id="blogs">
                                     <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
                                     <div><?php echo htmlspecialchars($blog['nombre']); ?></div>
