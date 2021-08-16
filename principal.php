@@ -68,13 +68,13 @@
                         <div class="col s6 md3">
                             <div class="card z-depth-0">
                                 <div class="card-content center">
-                                    <h6><?php echo htmlspecialchars($blog['tituloBlog']); ?></h6>
+                                    <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
                                     <div><?php echo htmlspecialchars($blog['nombre']); ?></div>
                                     <div><?php echo htmlspecialchars($blog['fecha_publicacion']); ?></div>
                                 </div>
                                 <div class="card-action right-align">
-                                <a class="brand-text" href="#">more info</a>
+                               <button type="button" class="btn btn-outline-secondary"><a class="brand-text" href="#">more info</a> </button>
                                 </div>
                             </div>
                         </div>
