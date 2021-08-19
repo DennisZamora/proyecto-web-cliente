@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_GET['idBlog'])){
+if (isset($_GET['idBlog'])) {
     $idBlog = $_GET['idBlog'];
 } else {
     $idBlog = "";
@@ -90,8 +90,12 @@ if ($query->num_rows > 0) {
                 <div class="main">
                     <form class="form-box">
                         <h1><?php echo "<strong>$titulo</strong>" ?> <br></h1>
-                        <div><?php echo "$contenido"?> <br></dvi>
-                        <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
+                        <div><?php echo "$contenido" ?> <br></dvi>
+                            <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
+                            <div class="card-action right-align">
+                                <br>
+                                <button type="submit" name="idBlog" class="btn btn-outline-secondary"> <a href="principal.php">BACK TO BLOGS</a></button>
+                            </div>
                     </form>
                 </div>
             </div>
