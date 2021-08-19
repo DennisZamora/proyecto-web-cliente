@@ -72,7 +72,7 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
         </div>
     </header>
     <!-- Main Content-->
-    <form method="GET" action="mostrarBlog.php">
+    <form method="POST" action="mostrarBlog.php">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -84,7 +84,7 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                         <div class="col s6 md3">
                             <div class="card z-depth-0">
                                 <div class="card-content center" id="blogs">
-                                    <div class="idBlogs" id="idBlogs" hidden><?php echo htmlspecialchars($blog['idBlog']); ?></div>
+                                    <input type="hidden" name="idBlogs" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">     
                                     <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
                                     <div><?php echo $posted; echo htmlspecialchars($blog['nombre']); echo $date; echo htmlspecialchars($blog['fecha_publicacion']);?></div>

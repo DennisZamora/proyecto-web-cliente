@@ -1,22 +1,13 @@
 <?php
-function recoge($var, $m = "")
-{
-    if (!isset($_GET[$var])) {
-        $tmp = (is_array($m)) ? [] : "";
-    } elseif (!is_array($_GET[$var])) {
-        $tmp = trim(htmlspecialchars($_GET[$var], ENT_QUOTES, "UTF-8"));
-    } else {
-        $tmp = $_GET[$var];
-        array_walk_recursive($tmp, function (&$valor) {
-            $valor = trim(htmlspecialchars($valor, ENT_QUOTES, "UTF-8"));
-        });
-    }
-    return $tmp;
+
+if(isset($_POST['idBlogs'])){
+    $idBlog = $_POST['idBlogs'];
+} else {
+    $idBlog = "";
 }
 
 
-//$idBlog = recoge("idBlogs");
-$idBlog = 1;
+
 $validacion = true;
 
 require_once 'consulta.php';
