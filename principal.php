@@ -43,10 +43,14 @@
                         <select id="id-categoria" >
                                     <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
                                     <?php 
-                                    foreach($resultadoCategoria as $categoria){ ?> 
-                                        <option value = "$categoria['idCategoria']">
-                                            <?php echo htmlspecialchars($categoria['nombreCategoria']); ?>
-                                        <?php } ?> 
+                                          while($row = mysqli_fetch_assoc($resultadoCategoria) ){
+                                            $categoriaId = $row['idCategoria'];
+                                            $nombreCategoria = $row['nombreCategoria'];
+                                            
+                                            // Option
+                                            echo "<option value='".$categoriaId."' >".$nombreCategoria."</option>";
+                                         }
+                                         ?>
                                 </select>
                         </a>                                                               
                         </li>
