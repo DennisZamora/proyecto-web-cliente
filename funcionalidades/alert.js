@@ -74,8 +74,7 @@ $("#register").submit(function(e){
             allowEscapeKey: false,
             allowEnterKey: false,
             stopKeydownPropagation: false
-        });
-        
+        }); 
     }
 });
 
