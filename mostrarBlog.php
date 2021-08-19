@@ -1,11 +1,10 @@
 <?php
 
-if(isset($_POST['idBlogs'])){
-    $idBlog = $_POST['idBlogs'];
+if(isset($_GET['idBlog'])){
+    $idBlog = $_GET['idBlog'];
 } else {
     $idBlog = "";
 }
-
 
 
 $validacion = true;
