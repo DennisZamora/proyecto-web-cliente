@@ -8,6 +8,7 @@ function consulta($consulta)
         printf("Error de los caracteres utf8: %s\n", $conexion->error);
     } 
     $respuesta = $conexion->query($consulta);
+    desconectaDB($conexion);
     return $respuesta;
 }
 ?>

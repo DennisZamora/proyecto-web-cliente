@@ -92,12 +92,12 @@ if ($query->num_rows > 0) {
                         <h1><?php echo "<strong>$titulo</strong>" ?> <br></h1>
                         <div><?php echo "$contenido" ?> <br></dvi>
                             <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
-                            <div class="card-action right-align">
-                                <br>
-                                <button type="submit" name="idBlog" class="btn btn-outline-secondary"> <a href="principal.php">BACK TO BLOGS</a></button>
-                            </div>
                     </form>
                 </div>
+            </div>
+            <div class="card-action right-align">
+                <br>
+                 <a href="principal.php"><em><u>BACK TO BLOGS</u></em></a></button>
             </div>
         </div>
 

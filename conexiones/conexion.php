@@ -11,3 +11,9 @@ if ($conexion->connect_error) {
 }
 return $conexion;
 }
+
+function desconectaDB($conexion){
+   $close = mysqli_close($conexion); 
+   return $close;
+   }
+?>
