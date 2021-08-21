@@ -1,36 +1,3 @@
-<?php
-
-if (isset($_GET['idBlog'])) {
-    $idBlog = $_GET['idBlog'];
-} else {
-    $idBlog = "";
-}
-
-
-$validacion = true;
-
-require_once 'consulta.php';
-
-$consulta = "SELECT b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria, c.idCategoria  
-    FROM blog a,usuario b,categoria c
-    WHERE a.idUsuario = b.idUsuario 
-    and a.idCategoria = c.idCategoria
-    AND a.idBlog =  $idBlog";
-
-$query = consulta($consulta);
-
-if ($query->num_rows > 0) {
-    while ($row = $query->fetch_assoc()) {
-        $titulo = $row["tituloBlog"];
-        $contenido = $row["contenidoBlog"];
-        $nombre = $row["nombre"];
-        $fecha = $row["fecha_publicacion"];
-    }
-} else {
-    $validacion = false;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +14,18 @@ if ($query->num_rows > 0) {
     <link rel="icon" href="imagenes/icono.png">
     <link rel="stylesheet" href="css/principal.css">
 </head>
+<?php
+include('conexiones/conexion.php');
+$conexion = conecta();
+$consulta = "select a.idBlog,b.nombre,a.tituloBlog,a.contenidoBlog,a.fecha_publicacion,c.nombreCategoria, c.idCategoria 
+            from blog a,usuario b,categoria c
+            where a.idUsuario = b.idUsuario
+            and a.idCategoria = c.idCategoria";
+$resultado = mysqli_query($conexion, $consulta);
+
+$consultaCategoria = "SELECT idCategoria,nombreCategoria FROM categoria";
+$resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
+?>
 
 <body>
     <!-- Navigation-->
@@ -62,7 +41,17 @@ if ($query->num_rows > 0) {
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Categoria</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">
+                            <select id="id-categoria">
+                                <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
+                                <?php
+                                foreach ($resultadoCategoria as $categoria) { ?>
+                                    <option value="$categoria['idCategoria']">
+                                        <?php echo htmlspecialchars($categoria['nombreCategoria']); ?>
+                                    <?php } ?>
+                            </select>
+                        </a>
+                    </li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
@@ -83,49 +72,41 @@ if ($query->num_rows > 0) {
         </div>
     </header>
     <!-- Main Content-->
-
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="main">
-                    <form class="form-box">
-                        <h1><?php echo "<strong>$titulo</strong>" ?> <br></h1>
-                        <div><?php echo "$contenido" ?> <br></dvi>
-                            <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
-                    </form>
+                    <!--CRUD-->
+                    
+
+               
                 </div>
-            </div>
-            <div class="card-action right-align">
-                <br>
-                 <a href="principal.php"><em><u>BACK TO BLOGS</u></em></a></button>
             </div>
         </div>
+    </div>
 
-        <footer class="border-top">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-
-                            <li class="list-inline-item">
-                                <a href="https://github.com/shu353/proyecto-web-cliente">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
-                    </div>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://github.com/shu353/proyecto-web-cliente">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-
-        <script src="plugins/jquery-3.5.1.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="funcionalidades/principal.js"></script>
+    <script src="plugins/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="funcionalidades/principal.js"></script>
 </body>
 
 </html>
