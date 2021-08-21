@@ -51,7 +51,7 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                                             $nombreCategoria = $row['nombreCategoria'];
                                             
                                             // Option
-                                            echo "<option value='".$categoriaId."' >".$nombreCategoria."</option>";
+                                            echo "<option name='categoria' value='".$categoriaId."' >".$nombreCategoria."</option>";
                                          }
                                          ?>
                                 </select>
