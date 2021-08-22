@@ -43,7 +43,7 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" >
-                        <select id="id-categoria" >
+                        <select name="id-categoria" id="id-categoria">
                                     <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
                                     <?php 
                                           while($row = mysqli_fetch_assoc($resultadoCategoria) ){
