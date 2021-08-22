@@ -9,7 +9,10 @@ if(isset($_POST["categoriaId"]))
 {  
      if($_POST["categoriaId"] != '')  
      {  
-         $sql = "SELECT idBlog, tituloBlog, contenidoBlog, fecha_publicacion,  FROM blog WHERE idCategoria = '".$_POST["categoriaId"]."'";  
+         $sql = "SELECT a.idBlog, a.tituloBlog, a.contenidoBlog,b.username,a.fecha_publicacion FROM blog a,usuario b,categoria c 
+         WHERE a.idUsuario = b.idUsuario
+        and a.idCategoria = c.idCategoria 
+        and a.idCategoria = '".$_POST["categoriaId"]."'";  
      }  
      else  
      {  
