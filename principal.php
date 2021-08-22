@@ -88,14 +88,14 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                     ?>
                     <?php foreach ($resultado as $blog) { ?>
                         <div class="col s6 md3">
-                            <div class="card z-depth-0">
-                                <div class="card-content center" id="blogs">
+                            <div class="card z-depth-0" >
+                                <div class="card-content center" id="blogs" style="padding: 10px 10px 0 10px;">
                                     <input type="hidden" name="idBlogs" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">     
                                     <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
                                     <div><?php echo $posted; echo htmlspecialchars($blog['nombre']); echo $date; echo htmlspecialchars($blog['fecha_publicacion']);?></div>
                                 </div>
-                                <div class="card-action right-align">
+                                <div class="card-action right-align" style="padding: 15px 10px 10px 10px;">
                                     <button type="submit" name="idBlog" class="btn btn-outline-secondary" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">More info</button>
                                 </div>
                             </div>

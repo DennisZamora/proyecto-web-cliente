@@ -43,10 +43,33 @@ $("#register").submit(function(e){
     var username = $.trim($("#username").val());
     var email = $.trim($("#email").val());
     var password =$.trim($("#password").val());
+     
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('POST', '../valiRegister.php',true);
+    // xhr.onload = function (){
+    //     let respuesta = JSON.parse(xhr.responseText);
+    //     console.log(respuesta);
+    //     if (respuesta.respuesta === false){
+    //         Swal.fire({
+    //             title: "Error creating an account",
+    //             text: "Please try again",
+    //             icon: 'warning',
+    //             width: '40%',
+    //             padding: '2%',
+    //             backdrop: 'true',
+    //             timerProgressBar: true,
+    //             allowOutsideClick: true,
+    //             allowEscapeKey: false,
+    //             allowEnterKey: false,
+    //             stopKeydownPropagation: false
+    //         });
+    //         e.preventDefault();
+    //     }
+    // }
+    
     
     if (name.length == "" || last_name.length == "" || username.length == "" ||
-    email.length == "" || password.length == "") {
-        
+    email.length == "" || password.length == "") { 
         Swal.fire({
             title: "Error creating an account",
             text: "Please try again",
