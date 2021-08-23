@@ -29,6 +29,10 @@ if ($query->num_rows > 0) {
 } else {
     $validacion = false;
 }
+
+
+$consultaCategoria = "SELECT idCategoria,nombreCategoria FROM categoria";
+$resultadoCategoria = consulta($consultaCategoria)
 ?>
 
 <!DOCTYPE html>
@@ -62,11 +66,26 @@ if ($query->num_rows > 0) {
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Categoria</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">
+                            <select name="id-categoria" id="id-categoria">
+                                <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
+                                <?php
+                                while ($row = mysqli_fetch_assoc($resultadoCategoria)) {
+                                    $categoriaId = $row['idCategoria'];
+                                    $nombreCategoria = $row['nombreCategoria'];
+
+                                    // Option
+                                    echo "<option name='categoria' value='" . $categoriaId . "' >" . $nombreCategoria . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </a>
+                    </li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
+        </div>
         </div>
     </nav>
     <!-- Page Header-->
@@ -90,15 +109,16 @@ if ($query->num_rows > 0) {
                 <div class="main">
                     <form class="form-box">
                         <h1><?php echo "<strong>$titulo</strong>" ?> <br></h1>
-                        <div><?php echo "$contenido" ?> <br></dvi>
-                            <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
+                        <div><?php echo "$contenido" ?> <br></div>
+                        <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
                     </form>
+                    <div class="card-action right-align">
+                        <br>
+                        <a href="principal.php"><em><u>BACK TO BLOGS</u></em></a></button>
+                    </div>
                 </div>
             </div>
-            <div class="card-action right-align">
-                <br>
-                 <a href="principal.php"><em><u>BACK TO BLOGS</u></em></a></button>
-            </div>
+
         </div>
 
         <footer class="border-top">
@@ -121,11 +141,11 @@ if ($query->num_rows > 0) {
                 </div>
             </div>
         </footer>
+    </div>
 
-
-        <script src="plugins/jquery-3.5.1.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="funcionalidades/principal.js"></script>
+    <script src="plugins/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="funcionalidades/principal.js"></script>
 </body>
 
 </html>

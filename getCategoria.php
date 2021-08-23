@@ -25,20 +25,26 @@ if(isset($_POST["categoriaId"]))
      $result = mysqli_query($conexion, $sql);  
      while($row = mysqli_fetch_array($result))  
      {  
-          $output .= '
-                    <div class="card z-depth-0"> 
-                        <div class="col s6 md3">
-                            <div class="card-content center" id="blogs">
-                                <input type="hidden" name="idBlogs" >
-                                <h3>' .$row["tituloBlog"].  '<h3>
-                                <div>' . htmlspecialchars($row["contenidoBlog"]) .'</div>
-                                <div>' .$posted .htmlspecialchars($row["username"]) .$date .htmlspecialchars($row["fecha_publicacion"]).'</div>
+        $tituloBlog = $row['tituloBlog'];
+        $contenidoBlog = $row['contenidoBlog'];
+        $username = $row['username'];
+        $fecha_publicacion = $row['fecha_publicacion'];
+        $idBlog = $row['idBlog'];
+
+          $output .= "
+                    <div class='card z-depth-0'> 
+                        <div class='col s6 md3'>
+                            <div class='card-content center' id='blogs'>
+                                <input type='hidden' name='idBlogs' >
+                                <h3>" .$tituloBlog.  "</h3>
+                                <div>" . htmlspecialchars($contenidoBlog) ."</div>
+                                <div>" .$posted .htmlspecialchars($username) .$date .htmlspecialchars($fecha_publicacion)."</div>
                             </div>
-                            <div class="card-action right-align"> 
-                                <button type="submit" name="idBlog" class="btn btn-outline-secondary" value=.$row["idBlog"]> More info </button>
+                            <div class='card-action right-align'> 
+                                <button type='submit' name='idBlog' class='btn btn-outline-secondary' value='".$idBlog."'> More info </button>
                             </div>
                         </div>    
-                    </div>';
+                    </div>";
                                 
      }  
      echo $output;  
