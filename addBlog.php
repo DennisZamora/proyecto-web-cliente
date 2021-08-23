@@ -76,9 +76,35 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                     <!--CRUD-->
-                    
+                    <div id="formBlogs" class="main">
+                        <strong><span id="idFotograma" style="font-family: 'Poppins', sans-serif; font-size: 24pt">
+                                Agregar un blog</span></strong><br />
+                        <br />
+                        <div style="text-align: left; font-family: Arial">
+                            Nombre del usuario:<br />
+                            <input name="nombreUsuario" type="text" id="nombreUsuario" style="width:250px;" /><br />
 
-               
+                            Categoria:<br />
+                            <select name="categoria" id="categoria" style="font-size:Medium;width:250px;">
+
+                                <?php
+                                    foreach ($resultadoCategoria as $categoria) { ?>
+                                        <option value="$categoria['idCategoria']">
+                                        <?php echo htmlspecialchars($categoria['nombreCategoria']); ?>
+                                    <?php } ?>
+
+                            </select><br />
+
+                            Título del blog:<br/>
+                            <input name="tituloBlog" type="text" id="tituloBlog" style="width: 410px;"/> <br/>
+
+                            Nuevo blog:<br />
+                            <textarea name="blog" rows="2" cols="20" id="blog"
+                                style="height:64px;width:440px;"></textarea><br />
+                                <input type="submit" name="btSubir" value="Agregar blog" id="btSubir" style="width:150px;" />
+                            &nbsp;
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
