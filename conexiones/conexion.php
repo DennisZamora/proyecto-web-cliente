@@ -1,4 +1,6 @@
 <?php
+
+
 function conecta(){
 $servidor = "localhost";
 $usuario = "root";
