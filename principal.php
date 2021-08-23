@@ -27,34 +27,40 @@ $consultaCategoria = "SELECT idCategoria,nombreCategoria FROM categoria";
 $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
 ?>
 
-<body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="principal.php">Blog personal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">
-                            <select id="id-categoria">
-                                <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
-                                <?php
-                                foreach ($resultadoCategoria as $categoria) { ?>
-                                    <option value="$categoria['idCategoria']">
-                                        <?php echo htmlspecialchars($categoria['nombreCategoria']); ?>
-                                    <?php } ?>
-                            </select>
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
-                </ul>
+    
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="principal.php">Blog personal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="principal.php">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="perfil.php">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" >
+                        <select name="id-categoria" id="id-categoria">
+                                    <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
+                                    <?php 
+                                          while($row = mysqli_fetch_assoc($resultadoCategoria) ){
+                                            $categoriaId = $row['idCategoria'];
+                                            $nombreCategoria = $row['nombreCategoria'];
+                                            
+                                            // Option
+                                            echo "<option name='categoria' value='".$categoriaId."' >".$nombreCategoria."</option>";
+                                         }
+                                         ?>
+                                </select>
+                        </a>                                                               
+                        </li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutUs.php">Contácnenos</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="cerrarsesion.php">Cerrar sesion</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -82,14 +88,14 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                     ?>
                     <?php foreach ($resultado as $blog) { ?>
                         <div class="col s6 md3">
-                            <div class="card z-depth-0">
-                                <div class="card-content center" id="blogs">
+                            <div class="card z-depth-0" >
+                                <div class="card-content center" id="blogs" style="padding: 10px 10px 0 10px;">
                                     <input type="hidden" name="idBlogs" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">     
                                     <h3><?php echo htmlspecialchars($blog['tituloBlog']); ?></h3>
                                     <div><?php echo htmlspecialchars($blog['contenidoBlog']); ?></div>
                                     <div><?php echo $posted; echo htmlspecialchars($blog['nombre']); echo $date; echo htmlspecialchars($blog['fecha_publicacion']);?></div>
                                 </div>
-                                <div class="card-action right-align">
+                                <div class="card-action right-align" style="padding: 15px 10px 10px 10px;">
                                     <button type="submit" name="idBlog" class="btn btn-outline-secondary" value="<?php echo htmlspecialchars($blog['idBlog']); ?>">More info</button>
                                 </div>
                             </div>

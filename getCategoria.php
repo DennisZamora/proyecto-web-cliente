@@ -1,26 +1,34 @@
 <?php 
+
 include("conexiones/conexion.php");
-
-$idCategoria = 0;
 $conexion = conecta();
-if(isset($_POST['categoria'])){
-    $idCategoria = mysqli_real_escape_string($conexion,$_POST['categoria']); //id categoria
- }
 
- $blogArray = array();
+$output = '';  
 
+if(isset($_POST["categoriaId"]))  
+{  
+     if($_POST["categoriaId"] != '')  
+     {  
+         $sql = "SELECT a.idBlog, a.tituloBlog, a.contenidoBlog,b.username,a.fecha_publicacion FROM blog a,usuario b,categoria c 
+         WHERE a.idUsuario = b.idUsuario
+        and a.idCategoria = c.idCategoria 
+        and a.idCategoria = '".$_POST["categoriaId"]."'";  
+     }  
+     else  
+     {  
+         $sql = "SELECT * FROM categoria";  
+     }  
+     $result = mysqli_query($conexion, $sql);  
+     while($row = mysqli_fetch_array($result))  
+     {  
+          $output .= '<div class="col s6 md3">
+                        <div class="card-content center" id="blogs">
+                        <input type="hidden" name="idBlogs" >
+                        <h3>' .$row["tituloBlog"].  '<h3>
+                        </div>
+                     </div>';  
+     }  
+     echo $output;  
+}  
 
-if($idCategoria > 0){
-   $sql = "SELECT idBlog, tituloBlog, contenidoBlog, fecha_publicacion,  FROM blog WHERE idCategoria=".$idCategoria;
-
-   $result = mysqli_query($conexion,$sql);  
-   
-   while( $row = mysqli_fetch_array($result) ){
-      $idBlog = $row['idBlog'];
-      $tituloBlog = $row['tituloBlog'];
-
-      $blogArray[] = array("idBlog" => $idBlog, "tituloBlog" => $tituloBlog);
-   }
- }
-// encoding array to json format
-echo json_encode($blogArray);
+?>
