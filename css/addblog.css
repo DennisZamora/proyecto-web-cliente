@@ -1,0 +1,40 @@
+.form-box{
+    width: 300px;
+    padding: 30px;
+    background-color: #F5F5F5;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.formBlogs input[type="text"],
+.formBlogs button[type="submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid #FF533D;
+    width: 200px;
+    outline: none;
+    color: #0F1626;
+    border-radius: 25px;
+    transition: 0.25s;
+}
+
+.formBlogs input[type="text"]:focus{
+    width: 280px;
+    border-color: #0F1626;
+}
+
+.formBlogs button[type="submit"]{
+    border: 0;
+    background: #FF533D;
+    cursor: pointer;
+    border: 2px solid #FF533D;
+    font-family: 'Poppins', sans-serif bold;
+}
+
+.formBlogs button[type="submit"]:hover{
+    background: none;
+}

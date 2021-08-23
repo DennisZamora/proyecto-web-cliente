@@ -3,11 +3,34 @@ $(document).ready(function () {
     cargaCategorias();
 
     $("#btSubir").click(function () {
-        ingresaBlog($("#tituloBlog").val(), $("#blog").val(), $("#nombreUsuario").val(), 
-        $("#idCategoria").val());
-    });
+        var titulo = $.trim($("#tituloBlog").val());
+        var blog = $.trim($("#blog").val());
+        var usuario = $.trim($("#nombreUsuario").val());
+        var categoria = $.trim($("#idCategoria").val());
 
+        if (titulo === "" || blog === "" || usuario === "" || categoria === "") {
+            Swal.fire({
+                title: "Datos estan vacios",
+                text: "Ingrese los datos correctamente",
+                icon: 'error',
+                width: '40%',
+                padding: '2%',
+                backdrop: 'true',
+                timerProgressBar: true,
+                allowOutsideClick: true,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                stopKeydownPropagation: false
+            });
+        } else {
+            ingresaBlog($("#tituloBlog").val(), $("#blog").val(), $("#nombreUsuario").val(),
+            $("#idCategoria").val());
+        }   
+    });
 });
+
+
+
 
 function cargaCategorias() {
     try {
@@ -47,13 +70,11 @@ function ingresaBlog(ptituloBlog, pcontenidoBlog, pidUsuario, pidCategoria) {
                 type: 'POST',
                 dataType: 'json',
                 success: function (r) {
-                    InsercionTutoriaExitosa(r);
-                    header("location: principal.php");
-                    //window.location.replace('principal.php');
-
+                    InsercionBlogExitosa(r);
+                    window.location.replace("principal.php");
                 },
                 error: function (r) {
-                    InsercionTutoriaFallida(r);
+                    InsercionBlogFallida();
                 }
             });
     } catch (err) {
@@ -62,7 +83,6 @@ function ingresaBlog(ptituloBlog, pcontenidoBlog, pidUsuario, pidCategoria) {
 }
 
 function InsercionBlogExitosa(TextoJSON) {
-
     Swal.fire({
         title: "Ingreso exitoso",
         text: TextoJSON,
@@ -76,13 +96,13 @@ function InsercionBlogExitosa(TextoJSON) {
         allowEnterKey: false,
         stopKeydownPropagation: false
     });
-    e.preventDefault();
+
 }
 
-function InsercionBlogFallida(TextoJSON) {
+function InsercionBlogFallida() {
     Swal.fire({
         title: "Ingreso fallido",
-        text: TextoJSON,
+        text: "Los datos no se ingresaron correctamente",
         icon: 'error',
         width: '40%',
         padding: '2%',
@@ -93,5 +113,4 @@ function InsercionBlogFallida(TextoJSON) {
         allowEnterKey: false,
         stopKeydownPropagation: false
     });
-    e.preventDefault();
 }

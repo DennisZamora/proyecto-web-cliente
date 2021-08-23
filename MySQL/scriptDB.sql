@@ -68,8 +68,7 @@ insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
 insert into categoria (nombreCategoria) values 
 ('MySQL'),
 ('JavaScript'),
-('HTML5'),
-('PHP');
+('HTML5');
 
 insert into blog (tituloBlog,contenidoBlog,idUsuario,idCategoria) values
 ('OPINION ABOUT MYSQL','MySQL is one of the best databases, very light,
