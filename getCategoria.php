@@ -30,7 +30,7 @@ if(isset($_POST["categoriaId"]))
                         <div class="col s6 md3">
                             <div class="card-content center" id="blogs">
                                 <input type="hidden" name="idBlogs" >
-                                <h3>' .$row["tituloBlog"].  '<h3>
+                                <h3>' .$row["tituloBlog"].  '</h3>
                                 <div>' . htmlspecialchars($row["contenidoBlog"]) .'</div>
                                 <div>' .$posted .htmlspecialchars($row["username"]) .$date .htmlspecialchars($row["fecha_publicacion"]).'</div>
                             </div>

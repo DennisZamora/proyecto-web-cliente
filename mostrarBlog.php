@@ -90,7 +90,7 @@ if ($query->num_rows > 0) {
                 <div class="main">
                     <form class="form-box">
                         <h1><?php echo "<strong>$titulo</strong>" ?> <br></h1>
-                        <div><?php echo "$contenido" ?> <br></dvi>
+                        <div><?php echo "$contenido" ?> <br></div>
                             <div><?php echo "<i><strong>Posted by: </strong> <i>$nombre</i> <strong>on: </strong> $fecha</i>"  ?></div>
                     </form>
                 </div>
