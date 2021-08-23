@@ -28,16 +28,12 @@ if ($usuario === "" || $contrasena === "") {
 if ($query->num_rows > 0) {
     while ($row = $query->fetch_assoc()) {
         $idUsuario = $row["idUsuario"];
-        $contenido = $row["contenidoBlog"];
-        $nombre = $row["nombre"];
-        $fecha = $row["fecha_publicacion"];
     }
 } else {
     $validacion = false;
 }
   }
 }
-
 
 $conexion = conecta();
 $consulta = "SELECT username,contrasena FROM usuario where username='$usuario' and contrasena='$contrasena'";

@@ -37,6 +37,24 @@ constraint FK_BLOG_CATEGORIA foreign key(idCategoria) references categoria (idCa
 constraint FK_BLOG_USUARIO foreign key(idUsuario) references usuario (idUsuario)
 );
 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `proyecto`.`pGetCategoria`$$
+
+CREATE PROCEDURE `proyecto`.`pGetCategoria`()
+    BEGIN
+	SELECT idCategoria,nombreCategoria FROM categoria;	
+    END$$
+    
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE proyecto.spInsertaBlog(in ptituloBlog varchar(100), in pcontenidoBlog varchar(400), in pidUsuario int, in pidCategoria int)
+    BEGIN
+    INSERT INTO blog (tituloBlog, contenidoBlog, idUsuario, idCategoria) VALUES (ptituloBlog, pcontenidoBlog, pidUsuario, pidCategoria);
+    END$$
+DELIMITER ;
+
 insert into rol (idRol,descripcionRol) values 
 ('admin','Administrador'),
 ('usuario','Usuario regular');
