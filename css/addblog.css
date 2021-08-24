@@ -2,6 +2,7 @@
     padding: 30px;
     text-align: left;
     border-radius: 25px;
+    border: 2px solid #0F1626;
 }
 
 .formBlogs input[type="text"],
