@@ -8,7 +8,7 @@ $(document).ready(function () {
       type: "POST",
       data: { categoriaId: categoriaId },
       success: function (data) {
-        $("#blogs").html(data);
+        $("#container-blog").html(data);
       },
     });
   });
