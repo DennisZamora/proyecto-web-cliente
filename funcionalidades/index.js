@@ -1,11 +1,11 @@
 $(document).ready(function () {
-
+    cargaUsuarios();
     cargaCategorias();
 
     $("#btSubir").click(function () {
         var titulo = $.trim($("#tituloBlog").val());
         var blog = $.trim($("#blog").val());
-        var usuario = $.trim($("#nombreUsuario").val());
+        var usuario = $.trim($("#idUsuario").val());
         var categoria = $.trim($("#idCategoria").val());
 
         if (titulo === "" || blog === "" || usuario === "" || categoria === "") {
@@ -23,13 +23,25 @@ $(document).ready(function () {
                 stopKeydownPropagation: false
             });
         } else {
-            ingresaBlog($("#tituloBlog").val(), $("#blog").val(), $("#nombreUsuario").val(),
+            ingresaBlog($("#tituloBlog").val(), $("#blog").val(), $("#idUsuario").val(),
             $("#idCategoria").val());
         }   
     });
 });
 
 
+function cargaUsuarios() {
+    try {
+        $.ajax({
+            url: 'getUsuario.php'
+        })
+            .done(function (data) {
+                LlenaUsuarioJson(data);
+            });
+    } catch (err) {
+        alert(err);
+    }
+}
 
 
 function cargaCategorias() {
@@ -42,6 +54,17 @@ function cargaCategorias() {
             });
     } catch (err) {
         alert(err);
+    }
+}
+
+function LlenaUsuarioJson(TextoJSON) {
+    var elValor;
+    var elHTML;
+    var ObjetoJSON = JSON.parse(TextoJSON);
+    for (i = 0; i < ObjetoJSON.length; i++) {
+        elValor = ObjetoJSON[i].idUsuario;
+        elHTML = ObjetoJSON[i].username;
+        $('#idUsuario').append($('<option></option>').val(elValor).html(elHTML));
     }
 }
 

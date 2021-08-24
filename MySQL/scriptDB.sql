@@ -55,6 +55,16 @@ CREATE PROCEDURE proyecto.spInsertaBlog(in ptituloBlog varchar(100), in pconteni
     END$$
 DELIMITER ;
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `proyecto`.`pGetUsuario`$$
+
+CREATE PROCEDURE `proyecto`.`pGetUsuario`()
+    BEGIN
+	SELECT idUsuario,username FROM usuario;	
+    END$$
+    
+DELIMITER ;
+
 insert into rol (idRol,descripcionRol) values 
 ('admin','Administrador'),
 ('usuario','Usuario regular');

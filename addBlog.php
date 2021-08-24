@@ -72,7 +72,9 @@ $resultado = mysqli_query($conexion, $consulta);
 
                     <div style="text-align: left; font-family: Arial">
                         Nombre del usuario:<br />
-                        <input name="nombreUsuario" type="text" id="nombreUsuario" style="width:250px;" /><br />
+                        <select name="idUsuario" type="text" id="idUsuario" style="font-size:Medium;width:250px;">
+
+                        </select><br />
 
                         Categoria:<br />
                         <select name="idCategoria" type="text" id="idCategoria" style="font-size:Medium;width:250px;">
@@ -92,7 +94,7 @@ $resultado = mysqli_query($conexion, $consulta);
         </div>
     </div>
     </div>
-     <br>
+    <br>
     <footer class="border-top">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
