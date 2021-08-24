@@ -37,6 +37,24 @@ constraint FK_BLOG_CATEGORIA foreign key(idCategoria) references categoria (idCa
 constraint FK_BLOG_USUARIO foreign key(idUsuario) references usuario (idUsuario)
 );
 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `proyecto`.`pGetCategoria`$$
+
+CREATE PROCEDURE `proyecto`.`pGetCategoria`()
+    BEGIN
+	SELECT idCategoria,nombreCategoria FROM categoria;	
+    END$$
+    
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE proyecto.spInsertaBlog(in ptituloBlog varchar(100), in pcontenidoBlog varchar(400), in pidUsuario int, in pidCategoria int)
+    BEGIN
+    INSERT INTO blog (tituloBlog, contenidoBlog, idUsuario, idCategoria) VALUES (ptituloBlog, pcontenidoBlog, pidUsuario, pidCategoria);
+    END$$
+DELIMITER ;
+
 insert into rol (idRol,descripcionRol) values 
 ('admin','Administrador'),
 ('usuario','Usuario regular');
@@ -50,8 +68,7 @@ insert into usuario (nombre,last_name,username,email,contrasena,idRol)values
 insert into categoria (nombreCategoria) values 
 ('MySQL'),
 ('JavaScript'),
-('HTML5'),
-('PHP');
+('HTML5');
 
 insert into blog (tituloBlog,contenidoBlog,idUsuario,idCategoria) values
 ('OPINION ABOUT MYSQL','MySQL is one of the best databases, very light,

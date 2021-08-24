@@ -1,0 +1,45 @@
+.formBlogs{
+    padding: 30px;
+    text-align: left;
+    border-radius: 25px;
+    border: 2px solid #0F1626;
+}
+
+.formBlogs input[type="text"],
+.formBlogs select[type="text"],
+.formBlogs textarea[type="text"],
+.formBlogs input[type="submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    padding: 5px 10px;
+    text-align: left;
+    border: 2px solid #FF533D;
+    width: 200px;
+    outline: none;
+    color: #0F1626;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.formBlogs select[type="text"]{
+    padding: 10px 10px;
+    font-family: 'Poppins', sans-serif bold;
+}
+
+.formBlogs input[type="text"]:focus{
+    width: 280px;
+    border-color: #0F1626;
+}
+
+.formBlogs input[type="submit"]{
+    border: 0;
+    background: #FF533D;
+    cursor: pointer;
+    border: 2px solid #FF533D;
+    font-family: 'Poppins', sans-serif bold;
+}
+
+.formBlogs input[type="submit"]:hover{
+    background: none;
+}

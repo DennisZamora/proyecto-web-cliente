@@ -44,7 +44,7 @@ validacion2($name, $last_name, $username, $email, $contrasena);
 
 function validacion2($name, $last_name, $username, $email, $contrasena)
 {
-    include "conexiones/conexion.php";
+    require_once "conexiones/conexion.php";
     $conexion = conecta();
     $query = "SELECT USERNAME FROM USUARIO WHERE USERNAME = '$username'";
     $r = mysqli_query($conexion, $query);
@@ -74,7 +74,7 @@ function validaVacio($name, $last_name, $username, $email, $contrasena)
         header("location:createAccount.php");
     } else {
         $idRol = 2;
-        include "conexiones/conexion.php";
+        require_once "conexiones/conexion.php";
         ingresarUsuario($name, $last_name, $username, $email, $contrasena, $idRol);
     }
 }
@@ -82,6 +82,7 @@ function validaVacio($name, $last_name, $username, $email, $contrasena)
 
 function ingresarUsuario($pname, $plast_name, $pusername, $pemail, $pcontrasena, $pidRol)
 {
+    require_once "conexiones/conexion.php";
     $conexion = conecta();
     $consulta = $conexion->prepare("INSERT INTO usuario (nombre,last_name,username,email,contrasena,idRol)  VALUES (?, ?, ?, ?, ?, ?)");
     $consulta->bind_param("sssssi", $name, $last_name, $username, $email, $contrasena, $idRol);
