@@ -16,24 +16,22 @@ if ($usuario === "" || $contrasena === "") {
   $error = "Algunos datos estan vacios";
   echo "<script type='text/javascript'>console.log('$error');</script>";
 } else {
-  $idUsuario2 = usuario();
+  $idUsuario2 = usuario($usuario);
 }
 
-function usuario()
+function usuario($usuario)
 {
   require_once 'consulta.php';
-  $usuario2 = $_POST['usuario'];
-
-  $consulta = "SELECT idUsuario FROM usuario where username='$usuario2'";
+  $consulta = "SELECT idUsuario FROM usuario where username='$usuario'";
 
   $query = consulta($consulta);
 
   if ($query->num_rows > 0) {
     while ($row = $query->fetch_assoc()) {
-      $idUsuario = $row["idUsuario"];
-      return $idUsuario;
+      $usuario = $row["idUsuario"];
     }
   }
+  return $usuario;
 }
 
 
