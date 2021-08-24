@@ -1,25 +1,29 @@
-.form-box{
-    width: 300px;
+.formBlogs{
     padding: 30px;
-    background-color: #F5F5F5;
-    text-align: center;
+    text-align: left;
     border-radius: 25px;
 }
 
 .formBlogs input[type="text"],
-.formBlogs button[type="submit"]{
+.formBlogs select[type="text"],
+.formBlogs textarea[type="text"],
+.formBlogs input[type="submit"]{
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
-    padding: 14px 10px;
-    text-align: center;
+    padding: 5px 10px;
+    text-align: left;
     border: 2px solid #FF533D;
     width: 200px;
     outline: none;
     color: #0F1626;
-    border-radius: 25px;
+    border-radius: 10px;
     transition: 0.25s;
+}
+
+.formBlogs select[type="text"]{
+    padding: 10px 10px;
+    font-family: 'Poppins', sans-serif bold;
 }
 
 .formBlogs input[type="text"]:focus{
@@ -27,7 +31,7 @@
     border-color: #0F1626;
 }
 
-.formBlogs button[type="submit"]{
+.formBlogs input[type="submit"]{
     border: 0;
     background: #FF533D;
     cursor: pointer;
@@ -35,6 +39,6 @@
     font-family: 'Poppins', sans-serif bold;
 }
 
-.formBlogs button[type="submit"]:hover{
+.formBlogs input[type="submit"]:hover{
     background: none;
 }

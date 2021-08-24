@@ -1,5 +1,5 @@
 <?php
-include('conexiones/conexion.php');
+require_once 'conexiones/conexion.php';
 if (isset($_POST['usuario'])) {
   $usuario = $_POST['usuario'];
 } else {
@@ -16,24 +16,26 @@ if ($usuario === "" || $contrasena === "") {
   $error = "Algunos datos estan vacios";
   echo "<script type='text/javascript'>console.log('$error');</script>";
 } else {
-  function usuario()
-  {
-    require_once 'consulta.php';
-    $usuario2 = $_POST['usuario'];
-    
-    $consulta = "SELECT idUsuario FROM usuario where username='$usuario2'";
-    
-    $query = consulta($consulta);
-
-if ($query->num_rows > 0) {
-    while ($row = $query->fetch_assoc()) {
-        $idUsuario = $row["idUsuario"];
-    }
-} else {
-    $validacion = false;
+  $idUsuario2 = usuario();
 }
+
+function usuario()
+{
+  require_once 'consulta.php';
+  $usuario2 = $_POST['usuario'];
+
+  $consulta = "SELECT idUsuario FROM usuario where username='$usuario2'";
+
+  $query = consulta($consulta);
+
+  if ($query->num_rows > 0) {
+    while ($row = $query->fetch_assoc()) {
+      $idUsuario = $row["idUsuario"];
+      return $idUsuario;
+    }
   }
 }
+
 
 $conexion = conecta();
 $consulta = "SELECT username,contrasena FROM usuario where username='$usuario' and contrasena='$contrasena'";
