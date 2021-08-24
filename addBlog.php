@@ -45,7 +45,7 @@ $resultadoCategoria = mysqli_query($conexion, $consultaCategoria);
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="addBlog.php">Agregar blogs</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4">
                             <select id="id-categoria">
-                                <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> Categorias </option>
+                                <option value="0" class="nav-link px-lg-3 py-3 py-lg-4"> CATEGORÍAS </option>
                                 <?php
                                 foreach ($resultadoCategoria as $categoria) { ?>
                                     <option value="$categoria['idCategoria']">
